@@ -8,6 +8,7 @@ import WorkerCreate from "./WorkerCreate";
 
 const WorkersList=()=>{
     const [empdata, empdatachange] = useState(null);
+    const [edudata, edudatachange] = useState(null);
     const [modal,setModal]=useState(false);
     const navigate = useNavigate();
 
@@ -50,6 +51,15 @@ const WorkersList=()=>{
         }).catch((err) => {
             console.log(err.message);
         })
+
+        fetch("http://localhost:8000/education").then((res) => {
+            return res.json();
+        }).then((resp) => {
+            edudatachange(resp);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+
     };
     return (
         <div className="container">
@@ -69,6 +79,7 @@ const WorkersList=()=>{
                                 <th className="bg-dark text-white"> Name </th>
                                 <th className="bg-dark text-white"> Email </th>
                                 <th className="bg-dark text-white"> Phone </th>
+                                <th className="bg-dark text-white"> Education</th>
                                 <th className="bg-dark text-white"> Action </th>
                             </tr>
                         </thead>
@@ -80,6 +91,7 @@ const WorkersList=()=>{
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
+                                        <td>{item.edu_id}</td>
                                         <td>
                                             <a onClick={() => { LoadEdit(item.id) }} className='btn btn-success'>  Edit   </a>
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MyModal from "../UI/MyModal/MyModal";
@@ -7,12 +7,22 @@ const WorkerCreate = ({ onClose, updateWorkers }) => {
     const [name, namechange] = useState("");
     const [email, emailchange] = useState("");
     const [phone, phonechange] = useState("");
+    const [edu, educhange] = useState([]);
     const [active, activechange] = useState(true);
     const [validation, valchange] = useState(false);
     const navigate = useNavigate();
+    const [selectedEdu, setselectedEdu] = useState("");
+
+    useEffect(() => {
+        fetch("http://localhost:8000/education")
+            .then((res) => res.json())
+            .then((data) => educhange(data))
+            .catch((err) => console.log(err));
+    }, []);
+
     const handlesubmit = (e) => {
         e.preventDefault();
-        const empdata = { name, email, phone, active };
+        const empdata = { name, email, phone, active, educ: setselectedEdu};
         fetch("http://localhost:8000/workers", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -60,6 +70,24 @@ const WorkerCreate = ({ onClose, updateWorkers }) => {
                                         <div className="form-group">
                                             <label> Phone </label>
                                             <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
+                                        </div>
+                                    </div>
+                                    {/* Выбор отдела */}
+                                    <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <label>Education</label>
+                                            <select
+                                                value={selectedEdu}
+                                                onChange={(e) => setselectedEdu(e.target.value)}
+                                                className="form-control"
+                                            >
+                                                <option value="">Select an Education</option>
+                                                {edu.map((dept) => (
+                                                    <option key={dept.id} value={dept.name_edu}>
+                                                        {dept.name_edu}
+                                                    </option>
+                                                ))}
+                                            </select>
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
