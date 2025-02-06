@@ -6,15 +6,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import MyModal from "../UI/MyModal/MyModal";
 import WorkerCreate from "./WorkerCreate";
 
-const WorkersList=()=>{
+const WorkersList = () => {
     const [empdata, empdatachange] = useState(null);
     const [edudata, edudatachange] = useState(null);
-    const [modal,setModal]=useState(false);
+    const [modal, setModal] = useState(false);
     const navigate = useNavigate();
 
     const closeModal = () => {
         setModal(false); // Закрывает окно
-      };
+    };
 
     const LoadDetail = (id) => {
         navigate("/workers/detail/" + id);
@@ -43,7 +43,7 @@ const WorkersList=()=>{
         fetchWorkers();
     }, []);
 
-    const fetchWorkers = () =>{
+    const fetchWorkers = () => {
         fetch("http://localhost:8000/workers").then((res) => {
             return res.json();
         }).then((resp) => {
@@ -69,8 +69,8 @@ const WorkersList=()=>{
                 </div>
                 <div className="card-body">
                     <div className='divbtn'>
-                        <button className="btn btn-success" onClick={()=> setModal(true)}>Add New (+)</button>
-                        <MyModal visible={modal} setVisible={setModal}><WorkerCreate onClose={closeModal} updateWorkers={fetchWorkers}/></MyModal>
+                        <button className="btn btn-success" onClick={() => setModal(true)}>Add New (+)</button>
+                        <MyModal visible={modal} setVisible={setModal}><WorkerCreate onClose={closeModal} updateWorkers={fetchWorkers} /></MyModal>
                     </div>
                     <table className="table table-bordered">
                         <thead className="bg-dark">
@@ -91,7 +91,18 @@ const WorkersList=()=>{
                                         <td>{item.name}</td>
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
-                                        <td>{item.edu_id}</td>
+                                        <td>    <select
+                                                    value={item.edu_id}
+                                                    onChange={(e) =>empdatachange (e.target.value)}
+                                                >
+                                                    {edudata.map((dept) => (
+                                                        <option key={dept.id} value={dept.id}>
+                                                            {dept.name_edu}
+                                                        </option>
+                                                    ))}
+                                        </select>
+                                        </td>
+
                                         <td>
                                             <a onClick={() => { LoadEdit(item.id) }} className='btn btn-success'>  Edit   </a>
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>
@@ -115,5 +126,5 @@ const WorkersList=()=>{
 export default WorkersList;
 
 
- 
+
 

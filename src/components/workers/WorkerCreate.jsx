@@ -2,11 +2,12 @@ import React,{useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MyModal from "../UI/MyModal/MyModal";
-const WorkerCreate = ({ onClose, updateWorkers }) => {
+const WorkerCreate = ({ onClose, updateWorkers, education }) => {
     const [id, idchange] = useState("");
     const [name, namechange] = useState("");
     const [email, emailchange] = useState("");
     const [phone, phonechange] = useState("");
+    const [edu_id, edu_idchange] = useState([]);
     const [edu, educhange] = useState([]);
     const [active, activechange] = useState(true);
     const [validation, valchange] = useState(false);
@@ -22,7 +23,7 @@ const WorkerCreate = ({ onClose, updateWorkers }) => {
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        const empdata = { name, email, phone, active, educ: setselectedEdu};
+        const empdata = { name, email, phone, active, edu_id};
         fetch("http://localhost:8000/workers", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -77,13 +78,13 @@ const WorkerCreate = ({ onClose, updateWorkers }) => {
                                         <div className="form-group">
                                             <label>Education</label>
                                             <select
-                                                value={selectedEdu}
-                                                onChange={(e) => setselectedEdu(e.target.value)}
+                                                value={edu_id}
+                                                onChange={(e) => edu_idchange(e.target.value)}
                                                 className="form-control"
                                             >
                                                 <option value="">Select an Education</option>
                                                 {edu.map((dept) => (
-                                                    <option key={dept.id} value={dept.name_edu}>
+                                                    <option key={dept.id} value={dept.id}>
                                                         {dept.name_edu}
                                                     </option>
                                                 ))}

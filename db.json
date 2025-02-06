@@ -36,6 +36,14 @@
       "email": "ertert",
       "phone": "353454646",
       "active": true
+    },
+    {
+      "id": "4068",
+      "name": "ddd",
+      "email": "gdfhfgh",
+      "phone": "343454364",
+      "active": true,
+      "edu_id": "1"
     }
   ],
   "education": [
