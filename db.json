@@ -1,0 +1,160 @@
+{
+  "workers": [
+    {
+      "id": "3",
+      "name": "robert",
+      "email": "robert@in.com",
+      "phone": "777778"
+    },
+    {
+      "id": "4",
+      "name": "jjgjk",
+      "email": "jgjjk",
+      "phone": "790877",
+      "active": true
+    },
+    {
+      "id": "8ab2",
+      "name": "asel",
+      "email": "asel@list.com",
+      "phone": "787879797",
+      "active": true
+    },
+    {
+      "id": "a996",
+      "name": "dd",
+      "email": "dd",
+      "phone": "ddd",
+      "active": true
+    },
+    {
+      "id": "af5a",
+      "name": "dd22",
+      "email": "ee",
+      "phone": "3223",
+      "active": true
+    },
+    {
+      "id": "9eb4",
+      "name": "ert",
+      "email": "ett443",
+      "phone": "4234325",
+      "active": true
+    },
+    {
+      "id": "e0a5",
+      "name": "ddddd",
+      "email": "dddddddd",
+      "phone": "34235325",
+      "active": true
+    },
+    {
+      "id": "919d",
+      "name": "ddddd",
+      "email": "dddddddd",
+      "phone": "34235325",
+      "active": true
+    },
+    {
+      "id": "8887",
+      "name": "fddffg",
+      "email": "rewfdvxvd",
+      "phone": "34324325",
+      "active": true
+    },
+    {
+      "id": "b6d8",
+      "name": "dfdgfdgfdg",
+      "email": "fdfgdfg",
+      "phone": "3443543545",
+      "active": true
+    },
+    {
+      "id": "0e99",
+      "name": "eer",
+      "email": "fdgfdgfd",
+      "phone": "32443545",
+      "active": true
+    },
+    {
+      "id": "ff71",
+      "name": "eer",
+      "email": "fdgfdgfd",
+      "phone": "32443545",
+      "active": true
+    },
+    {
+      "id": "de43",
+      "name": "gfdgf",
+      "email": "fgfhgfhgfh",
+      "phone": "45657657",
+      "active": true
+    },
+    {
+      "id": "67c7",
+      "name": "rr",
+      "email": "435",
+      "phone": "fgdfg",
+      "active": true
+    },
+    {
+      "id": "d9f6",
+      "name": "rr",
+      "email": "435",
+      "phone": "fgdfg",
+      "active": true
+    },
+    {
+      "id": "566f",
+      "name": "rr",
+      "email": "435",
+      "phone": "fgdfg",
+      "active": true
+    },
+    {
+      "id": "7911",
+      "name": "eeqqqqq",
+      "email": "qqqqqqqq",
+      "phone": "2222222222",
+      "active": true
+    },
+    {
+      "id": "e09d",
+      "name": "teste",
+      "email": "aaaa",
+      "phone": "11111111",
+      "active": true
+    },
+    {
+      "id": "fdb8",
+      "name": "teste",
+      "email": "aaaa",
+      "phone": "11111111",
+      "active": true
+    },
+    {
+      "id": "0977",
+      "name": "eeeeqqqqqqqqqqqqqqqqqqqqq",
+      "email": "eerr",
+      "phone": "353545",
+      "active": true
+    }
+  ],
+  "education": [
+    {
+      "id": "1",
+      "name_edu": "КНУ"
+
+    },
+    {
+        "id": "2",
+        "name_edu": "AUCA"
+  
+      },
+      {
+        "id": "3",
+        "name_edu": "КТУ"
+  
+      }
+]
+}
