@@ -2,7 +2,7 @@ import React,{useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import MyModal from "../UI/MyModal/MyModal";
-const WorkerCreate = ({ onClose, updateWorkers, education }) => {
+const WorkerCreate = ({ setModalAdd_com, updateWorkers }) => {
     const [id, idchange] = useState("");
     const [name, namechange] = useState("");
     const [email, emailchange] = useState("");
@@ -11,8 +11,6 @@ const WorkerCreate = ({ onClose, updateWorkers, education }) => {
     const [edu, educhange] = useState([]);
     const [active, activechange] = useState(true);
     const [validation, valchange] = useState(false);
-    const navigate = useNavigate();
-    const [selectedEdu, setselectedEdu] = useState("");
 
     useEffect(() => {
         fetch("http://localhost:8000/education")
@@ -31,7 +29,7 @@ const WorkerCreate = ({ onClose, updateWorkers, education }) => {
         }).then((res) => {
             alert('Saved saccessfully.');
             updateWorkers();
-            onClose();
+            setModalAdd_com();
 
         }).catch((err) => {
             console.log(err.message)
@@ -73,7 +71,7 @@ const WorkerCreate = ({ onClose, updateWorkers, education }) => {
                                             <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
-                                    {/* Выбор отдела */}
+                                    {/* Выбор образования */}
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Education</label>
@@ -101,7 +99,7 @@ const WorkerCreate = ({ onClose, updateWorkers, education }) => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <button className="btn btn-success " type="submit">Save</button>
-                                            <button className="btn btn-danger" type="button" onClick={() => { onClose() }}>
+                                            <button className="btn btn-danger" type="button" onClick={() => setModalAdd_com() }>
                                                 Back
                                             </button>
                                         </div>

@@ -1,14 +1,6 @@
 {
   "workers": [
     {
-      "id": "3",
-      "name": "robert",
-      "email": "robert@in.com",
-      "phone": "777778",
-      "edu_id": 1,
-      "active": true
-    },
-    {
       "id": "4",
       "name": "jjgjk",
       "email": "jgjjk",
@@ -24,26 +16,19 @@
       "active": true
     },
     {
-      "id": "e5e7",
-      "name": "dfdf",
-      "email": "2sfdsfd",
-      "phone": "55555555555",
-      "active": true
+      "id": "58c9",
+      "name": "asel",
+      "email": "замечательно",
+      "phone": "5000000000000001",
+      "edu_id": "2"
     },
     {
-      "id": "2258",
-      "name": "4353",
-      "email": "ertert",
-      "phone": "353454646",
-      "active": true
-    },
-    {
-      "id": "4068",
-      "name": "ddd",
-      "email": "gdfhfgh",
-      "phone": "343454364",
+      "id": "864a",
+      "name": "owl ! ?",
+      "email": "db  demir  bank ! ?",
+      "phone": "nest ! ?",
       "active": true,
-      "edu_id": "1"
+      "edu_id": "2"
     }
   ],
   "education": [

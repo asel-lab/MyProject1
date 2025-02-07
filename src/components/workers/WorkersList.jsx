@@ -3,24 +3,15 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MyModal from "../UI/MyModal/MyModal";
 import WorkerCreate from "./WorkerCreate";
+import WorkerEdit from "./WorkerEdit";
+import WorkerDetails from "./WorkerDetails";
 
 const WorkersList = () => {
-    const [empdata, empdatachange] = useState(null);
-    const [edudata, edudatachange] = useState(null);
-    const [modal, setModal] = useState(false);
-    const navigate = useNavigate();
-
-    const closeModal = () => {
-        setModal(false); // Закрывает окно
-    };
-
-    const LoadDetail = (id) => {
-        navigate("/workers/detail/" + id);
-    }
-
-    const LoadEdit = (id) => {
-        navigate("/workers/edit/" + id);
-    }
+    const [empdata, empdatachange] = useState([]);
+    const [edudata, edudatachange] = useState([]);
+    const [modalAdd, setModalAdd] = useState(false);
+    const [modalEdit, setModalEdit] = useState(false);
+    const [modalDetail, setModalDetail] = useState(false);
 
     const Removefunction = (id) => {
         if (window.confirm('Do you you want to remove?')) {
@@ -67,8 +58,10 @@ const WorkersList = () => {
                 </div>
                 <div className="card-body">
                     <div className='divbtn'>
-                        <button className="btn btn-success" onClick={() => setModal(true)}>Add New (+)</button>
-                        <MyModal visible={modal} setVisible={setModal}><WorkerCreate onClose={closeModal} updateWorkers={fetchWorkers} /></MyModal>
+                        <button className="btn btn-success" onClick={() => setModalAdd(true)}>Add New (+)</button>
+                        <MyModal visible={modalAdd}>
+                            <WorkerCreate setModalAdd_com={() => setModalAdd(false)} updateWorkers={fetchWorkers} />
+                        </MyModal>
                     </div>
                     <table className="table table-bordered">
                         <thead className="bg-dark">
@@ -90,21 +83,31 @@ const WorkersList = () => {
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>    <select
-                                                    value={item.edu_id}
-                                                    onChange={(e) =>empdatachange (e.target.value)}
-                                                >
-                                                    {edudata.map((dept) => (
-                                                        <option key={dept.id} value={dept.id}>
-                                                            {dept.name_edu}
-                                                        </option>
-                                                    ))}
+                                            value={item.edu_id}
+                                            onChange={(e) => empdatachange(e.target.value)}
+                                        >
+                                            {edudata.map((dept) => (
+                                                <option key={dept.id} value={dept.id}>
+                                                    {dept.name_edu}
+                                                </option>
+                                            ))}
                                         </select>
                                         </td>
 
                                         <td>
-                                            <a onClick={() => { LoadEdit(item.id) }} className='btn btn-success'>  Edit   </a>
+
+                                            <button className="btn btn-success" onClick={() => setModalEdit(true)}>Edit</button>
+                                            <MyModal visible={modalEdit}>
+                                                <WorkerEdit setModalEdit_com={() => setModalEdit(false)} updateWorkers={fetchWorkers} itemId_com={item.id} />
+                                            </MyModal>
+
+                                            <button className='btn btn-primary' onClick={() => setModalDetail(true)}>Detail</button>
+                                            <MyModal visible={modalDetail}>
+                                                <WorkerDetails setModalDetail_com={() => setModalDetail(false)} itemId_com={item.id} />
+                                            </MyModal>
+
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>
-                                            <a onClick={() => { LoadDetail(item.id) }} className='btn btn-primary'>Details</a>
+
                                         </td>
 
                                     </tr>
