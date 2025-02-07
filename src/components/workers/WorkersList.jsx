@@ -1,6 +1,4 @@
 import React from "react";
-
-import 'D:/react/project1/node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import MyModal from "../UI/MyModal/MyModal";
