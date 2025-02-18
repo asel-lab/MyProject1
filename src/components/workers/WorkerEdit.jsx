@@ -7,7 +7,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
     //const [empdata, empdatachange] = useState ({});
 
     useEffect(() => {
-        fetch("http://localhost:8000/workers/" + itemId_com).then((res) => {
+        fetch("http://localhost:8000/workers/" + itemId_com.id).then((res) => {
             return res.json();
         }).then((resp) => {
             idchange(resp.id);
@@ -41,7 +41,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
     const handlesubmit = (e) => {
         e.preventDefault();
         const empdata = { id, name, email, phone, active, edu_id };
-        fetch("http://localhost:8000/workers/" + itemId_com, {
+        fetch("http://localhost:8000/workers/" + itemId_com.id, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(empdata)
@@ -120,7 +120,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <button className="btn btn-success" type="submit">Save</button>
-                                            <button className="btn btn-danger" type="button" onClick={setModalEdit_com(false) }>
+                                            <button className="btn btn-danger" type="button" onClick={()=>setModalEdit_com(false) }>
                                                 Back
                                             </button>
                                         </div>

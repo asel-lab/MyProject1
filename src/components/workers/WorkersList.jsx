@@ -12,7 +12,19 @@ const WorkersList = () => {
     const [modalAdd, setModalAdd] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [modalDetail, setModalDetail] = useState(false);
+    const [catchdata, setDataChange ] = useState([]);
 
+    // const CatchData=(id) => {
+    //     fetch("http://localhost:8000/workers/" + id).then((res) => {
+    //         return res.json();
+    //     }).then((resp) => {
+    //         catchdatachange(resp);
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     })
+    // }
+
+    
     const Removefunction = (id) => {
         if (window.confirm('Do you you want to remove?')) {
             fetch("http://localhost:8000/workers/" + id, {
@@ -96,14 +108,14 @@ const WorkersList = () => {
 
                                         <td>
 
-                                            <button className="btn btn-success" onClick={() => setModalEdit(true)}>Edit</button>
+                                            <button className="btn btn-success" onClick={() => {setDataChange(item); setModalEdit(true)}}>Edit</button>
                                             <MyModal visible={modalEdit}>
-                                                <WorkerEdit setModalEdit_com={setModalEdit} updateWorkers={fetchWorkers} itemId_com={item.id} />
+                                                <WorkerEdit setModalEdit_com={setModalEdit} updateWorkers={fetchWorkers} itemId_com={catchdata} />
                                             </MyModal>
 
-                                            <button className='btn btn-primary' onClick={() => setModalDetail(true)}>Detail</button>
+                                            <button className='btn btn-primary' onClick={() => {setDataChange(item); setModalDetail(true)}}>Detail</button>
                                             <MyModal visible={modalDetail}>
-                                                <WorkerDetails setModalDetail_com={setModalDetail} empdata={item} />
+                                                <WorkerDetails setModalDetail_com={setModalDetail} empdata={catchdata} />
                                             </MyModal>
 
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>

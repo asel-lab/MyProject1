@@ -14,6 +14,14 @@ const WorkerDetails = ({ empdata, setModalDetail_com}) => {
     //     })
     // }, [])
 
+    // fetch("http://localhost:8000/workers/" + itemId_com).then((res) => {
+    //     return res.json();
+    //     }).then((resp) => {
+    //         empdatachange(resp);
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     })
+
     useEffect(() => {
         fetch("http://localhost:8000/education")
             .then((res) => res.json())
@@ -25,9 +33,9 @@ const WorkerDetails = ({ empdata, setModalDetail_com}) => {
     return (
         <div>
             <div className="card" style={{ "textAlign": "left" }}>
-                <div className="card-title">
+               {/*} <div className="card-title">
                     <h2>Employee Create</h2>
-                </div>
+                </div>*/}
                 <div className="card-body"></div>
                 {empdata &&
                     <div>
@@ -35,7 +43,7 @@ const WorkerDetails = ({ empdata, setModalDetail_com}) => {
                         <h3>Contact Details</h3>
                         <h5>Email is: {empdata.email}</h5>
                         <h5>Phone is: {empdata.phone}</h5>
-                        <h5>Phone is: {empdata.edu_id}</h5>
+                        {/*<h5>Phone is: {empdata.edu_id}</h5>*/}
                         {/* Выбор образования */}
                         <div className="col-lg-12">
                             <div className="form-group">
