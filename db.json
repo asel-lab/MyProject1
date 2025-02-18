@@ -29,6 +29,22 @@
       "phone": "nest ! ?",
       "active": true,
       "edu_id": "2"
+    },
+    {
+      "id": "5367",
+      "name": "ddd",
+      "email": "ddd@list.ru",
+      "phone": "552233",
+      "active": true,
+      "edu_id": "1"
+    },
+    {
+      "id": "a2fa",
+      "name": "ddd",
+      "email": "ddd@list.ru",
+      "phone": "552233444",
+      "active": true,
+      "edu_id": "1"
     }
   ],
   "education": [

@@ -60,7 +60,7 @@ const WorkersList = () => {
                     <div className='divbtn'>
                         <button className="btn btn-success" onClick={() => setModalAdd(true)}>Add New (+)</button>
                         <MyModal visible={modalAdd}>
-                            <WorkerCreate setModalAdd_com={() => setModalAdd(false)} updateWorkers={fetchWorkers} />
+                            <WorkerCreate setModalAdd_com={setModalAdd} updateWorkers={fetchWorkers} />
                         </MyModal>
                     </div>
                     <table className="table table-bordered">
@@ -98,12 +98,12 @@ const WorkersList = () => {
 
                                             <button className="btn btn-success" onClick={() => setModalEdit(true)}>Edit</button>
                                             <MyModal visible={modalEdit}>
-                                                <WorkerEdit setModalEdit_com={() => setModalEdit(false)} updateWorkers={fetchWorkers} itemId_com={item.id} />
+                                                <WorkerEdit setModalEdit_com={setModalEdit} updateWorkers={fetchWorkers} itemId_com={item.id} />
                                             </MyModal>
 
                                             <button className='btn btn-primary' onClick={() => setModalDetail(true)}>Detail</button>
                                             <MyModal visible={modalDetail}>
-                                                <WorkerDetails setModalDetail_com={() => setModalDetail(false)} itemId_com={item.id} />
+                                                <WorkerDetails setModalDetail_com={setModalDetail} itemId_com={item.id} />
                                             </MyModal>
 
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>

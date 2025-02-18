@@ -29,7 +29,7 @@ const WorkerCreate = ({ setModalAdd_com, updateWorkers }) => {
         }).then((res) => {
             alert('Saved saccessfully.');
             updateWorkers();
-            setModalAdd_com();
+            setModalAdd_com(false);
 
         }).catch((err) => {
             console.log(err.message)
@@ -99,7 +99,7 @@ const WorkerCreate = ({ setModalAdd_com, updateWorkers }) => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <button className="btn btn-success " type="submit">Save</button>
-                                            <button className="btn btn-danger" type="button" onClick={() => setModalAdd_com() }>
+                                            <button className="btn btn-danger" type="button" onClick={() => setModalAdd_com(false) }>
                                                 Back
                                             </button>
                                         </div>

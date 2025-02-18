@@ -48,7 +48,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
         }).then((res) => {
             alert('Saved saccessfully.')
             updateWorkers();
-            setModalEdit_com();
+            setModalEdit_com(false);
         }).catch((err) => {
             console.log(err.message)
         })
@@ -120,7 +120,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <button className="btn btn-success" type="submit">Save</button>
-                                            <button className="btn btn-danger" type="button" onClick={() => setModalEdit_com() }>
+                                            <button className="btn btn-danger" type="button" onClick={setModalEdit_com(false) }>
                                                 Back
                                             </button>
                                         </div>

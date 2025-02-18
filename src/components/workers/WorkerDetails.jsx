@@ -52,7 +52,7 @@ const WorkerDetails = ({ itemId_com, setModalDetail_com}) => {
                                 </select>
                             </div>
                         </div>
-                        <button className="btn btn-danger" type="button" onClick={() => setModalDetail_com()}>
+                        <button className="btn btn-danger" type="button" onClick={() => setModalDetail_com(false)}>
                             Back
                         </button>
                     </div>
