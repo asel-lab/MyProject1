@@ -6,22 +6,23 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
 
     //const [empdata, empdatachange] = useState ({});
 
-    useEffect(() => {
-        fetch("http://localhost:8000/workers/" + itemId_com.id).then((res) => {
-            return res.json();
-        }).then((resp) => {
-            idchange(resp.id);
-            namechange(resp.name);
-            emailchange(resp.email);
-            phonechange(resp.phone);
-            edu_idchange(resp.edu_id);
-            activechange(resp.isactive);
+    // useEffect(() => {
+    //     fetch("http://localhost:8000/workers/" + itemId_com.id).then((res) => {
+    //         return res.json();
+    //     }).then((resp) => {
+    //         idchange(resp.id);
+    //         namechange(resp.name);
+    //         emailchange(resp.email);
+    //         phonechange(resp.phone);
+    //         edu_idchange(resp.edu_id);
+    //         activechange(resp.isactive);
 
-        }).catch((err) => {
-            console.log(err.message);
-        })
-    }, [])
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     })
+    // }, [])
 
+    
     const [id, idchange] = useState("");
     const [name, namechange] = useState("");
     const [email, emailchange] = useState("");
@@ -30,6 +31,13 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
     const [active, activechange] = useState(true);
     const [validation, valchange] = useState(false);
     const [edu, educhange] = useState([]);
+
+    idchange(itemId_com.id);
+    namechange(itemId_com.name);
+    emailchange(itemId_com.email);
+    phonechange(itemId_com.phone);
+    edu_idchange(itemId_com.edu_id);
+    activechange(itemId_com.isactive);
 
     const navigate = useNavigate();
     useEffect(() => {
