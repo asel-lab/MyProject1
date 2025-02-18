@@ -103,7 +103,7 @@ const WorkersList = () => {
 
                                             <button className='btn btn-primary' onClick={() => setModalDetail(true)}>Detail</button>
                                             <MyModal visible={modalDetail}>
-                                                <WorkerDetails setModalDetail_com={setModalDetail} itemId_com={item.id} />
+                                                <WorkerDetails setModalDetail_com={setModalDetail} empdata={item} />
                                             </MyModal>
 
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>

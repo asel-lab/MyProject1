@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const WorkerDetails = ({ itemId_com, setModalDetail_com}) => {
-    const [empdata, empdatachange] = useState({});
+const WorkerDetails = ({ empdata, setModalDetail_com}) => {
+    //const [empdata, empdatachange] = useState({});
     const [edu, educhange] = useState([]);
-    useEffect(() => {
-        fetch("http://localhost:8000/workers/" + itemId_com).then((res) => {
-            return res.json();
-        }).then((resp) => {
-            empdatachange(resp);
-        }).catch((err) => {
-            console.log(err.message);
-        })
-    }, [])
+    // useEffect(() => {
+    //     fetch("http://localhost:8000/workers/" + itemId_com).then((res) => {
+    //         return res.json();
+    //     }).then((resp) => {
+    //         empdatachange(resp);
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     })
+    // }, [])
 
     useEffect(() => {
         fetch("http://localhost:8000/education")
