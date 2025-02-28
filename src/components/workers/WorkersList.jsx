@@ -29,6 +29,12 @@ const WorkersList = () => {
         setModalEdit(true);
     }
 
+    const LoadEdit1 = (id) => {
+        const item=empdata.find(d => {d.id=id});
+        setUserItem(item);
+        setModalEdit(true);
+    }
+
     const Removefunction = (id) => {
         if (window.confirm('Do you you want to remove?')) {
             fetch("http://localhost:8000/workers/" + id, {
@@ -122,6 +128,14 @@ const WorkersList = () => {
                                             <button className="btn btn-success" onClick={(e) =>{ LoadEdit(item) }}>Edit</button>
                                             <button className='btn btn-primary' onClick={() => { setDataChange(item); setModalDetail(true) }}>Detail</button>
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>
+
+                                        </td>
+
+                                        
+                                        <td>
+
+                                            <button className="btn btn-success" onClick={(e) =>{ LoadEdit1(item.id) }}>Edit1</button>
+                                            <button className='btn btn-primary' onClick={() => { setDataChange(item); setModalDetail(true) }}>Detail</button>
 
                                         </td>
 
