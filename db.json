@@ -17,7 +17,7 @@
     },
     {
       "id": "58c9",
-      "name": "asel",
+      "name": "aselya",
       "email": "замечательно",
       "phone": "5000000000000001",
       "edu_id": "2"
@@ -45,6 +45,14 @@
       "phone": "552233444",
       "active": true,
       "edu_id": "1"
+    },
+    {
+      "id": "9dd4",
+      "name": "drdrd",
+      "email": "fgjhfjkgkkfkfkkf",
+      "phone": "234567890",
+      "active": true,
+      "edu_id": "3"
     }
   ],
   "education": [

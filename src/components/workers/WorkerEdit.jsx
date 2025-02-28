@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
+const WorkerEdit = ({usrItem, setUsrItem, setModalEdit_com, updateWorkers}) => {
     //const { empid } = useParams();
 
     //const [empdata, empdatachange] = useState ({});
@@ -32,12 +32,12 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
     const [validation, valchange] = useState(false);
     const [edu, educhange] = useState([]);
 
-    idchange(itemId_com.id);
-    namechange(itemId_com.name);
-    emailchange(itemId_com.email);
-    phonechange(itemId_com.phone);
-    edu_idchange(itemId_com.edu_id);
-    activechange(itemId_com.isactive);
+    //idchange(usrItem.id);
+    // namechange(prev => prev !== itemId_com.name ? itemId_com.name : prev);
+    // emailchange(prev => prev !== itemId_com.email ? itemId_com.email : prev);
+    // phonechange(prev => prev !== itemId_com.phone ? itemId_com.phone : prev);
+    // edu_idchange(prev => prev !== itemId_com.edu_id ? itemId_com.edu_id : prev);
+    // activechange(prev => prev !== itemId_com.isactive ? itemId_com.isactive : prev);
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -48,11 +48,11 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
     }, []);
     const handlesubmit = (e) => {
         e.preventDefault();
-        const empdata = { id, name, email, phone, active, edu_id };
-        fetch("http://localhost:8000/workers/" + itemId_com.id, {
+        // const empdata = { id, name, email, phone, active, edu_id };
+        fetch("http://localhost:8000/workers/" + usrItem.id, {
             method: "PUT",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify(empdata)
+            body: JSON.stringify(usrItem)
         }).then((res) => {
             alert('Saved saccessfully.')
             updateWorkers();
@@ -78,26 +78,26 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>ID </label>
-                                            <input value={id} disabled="disabled" className="form-control"></input>
+                                            <input value={usrItem.id} disabled="disabled" className="form-control"></input>
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label> Name </label>
-                                            <input required value={name} onMouseDown={e => valchange(true)} onChange={e => namechange(e.target.value)} className="form-control"></input>
+                                           <input required value={usrItem.name} onMouseDown={e => valchange(true)} onChange={e => setUsrItem(({...usrItem, name: e.target.value}))} className="form-control"></input>
                                             {name.length == 0 && validation && <span className="text-danger" >Enter the Name</span>}
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label> Email </label>
-                                            <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                            <input value={usrItem.email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label> Phone </label>
-                                            <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
+                                            <input value={usrItem.phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
                                     {/* Выбор образования */}
@@ -105,7 +105,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
                                         <div className="form-group">
                                             <label>Education</label>
                                             <select
-                                                value={edu_id}
+                                                value={usrItem.edu_id}
                                                 onChange={(e) => edu_idchange(e.target.value)}
                                                 className="form-control"
                                             >
@@ -120,7 +120,7 @@ const WorkerEdit = ({itemId_com, setModalEdit_com, updateWorkers}) => {
                                     </div>
                                     <div className="col-lg-12">
                                         <div className="form-check">
-                                            <input checked={active} onChange={e => activechange(e.target.checked)} type="checkbox" className="form-check-input"></input>
+                                            <input checked={usrItem.active} onChange={e => activechange(e.target.checked)} type="checkbox" className="form-check-input"></input>
                                             <label className="form-check-label"> Is Active </label>
 
                                         </div>

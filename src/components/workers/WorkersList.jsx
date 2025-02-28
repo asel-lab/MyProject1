@@ -12,7 +12,8 @@ const WorkersList = () => {
     const [modalAdd, setModalAdd] = useState(false);
     const [modalEdit, setModalEdit] = useState(false);
     const [modalDetail, setModalDetail] = useState(false);
-    const [catchdata, setDataChange ] = useState([]);
+    const [catchdata, setDataChange] = useState([]);
+    const [userItem, setUserItem] = useState({});
 
     // const CatchData=(id) => {
     //     fetch("http://localhost:8000/workers/" + id).then((res) => {
@@ -23,8 +24,11 @@ const WorkersList = () => {
     //         console.log(err.message);
     //     })
     // }
+    const LoadEdit = (item) => {
+        setUserItem(item);
+        setModalEdit(true);
+    }
 
-    
     const Removefunction = (id) => {
         if (window.confirm('Do you you want to remove?')) {
             fetch("http://localhost:8000/workers/" + id, {
@@ -74,6 +78,13 @@ const WorkersList = () => {
                         <MyModal visible={modalAdd}>
                             <WorkerCreate setModalAdd_com={setModalAdd} updateWorkers={fetchWorkers} />
                         </MyModal>
+                        <MyModal visible={modalEdit}>
+                            <WorkerEdit setModalEdit_com={setModalEdit} updateWorkers={fetchWorkers} usrItem={userItem} setUsrItem={setUserItem} />
+                        </MyModal>
+                        <MyModal visible={modalDetail}>
+                            <WorkerDetails setModalDetail_com={setModalDetail} empdata={catchdata} />
+                        </MyModal>
+
                     </div>
                     <table className="table table-bordered">
                         <thead className="bg-dark">
@@ -108,16 +119,8 @@ const WorkersList = () => {
 
                                         <td>
 
-                                            <button className="btn btn-success" onClick={() => {setDataChange(item); setModalEdit(true)}}>Edit</button>
-                                            <MyModal visible={modalEdit}>
-                                                <WorkerEdit setModalEdit_com={setModalEdit} updateWorkers={fetchWorkers} itemId_com={catchdata} />
-                                            </MyModal>
-
-                                            <button className='btn btn-primary' onClick={() => {setDataChange(item); setModalDetail(true)}}>Detail</button>
-                                            <MyModal visible={modalDetail}>
-                                                <WorkerDetails setModalDetail_com={setModalDetail} empdata={catchdata} />
-                                            </MyModal>
-
+                                            <button className="btn btn-success" onClick={(e) =>{ LoadEdit(item) }}>Edit</button>
+                                            <button className='btn btn-primary' onClick={() => { setDataChange(item); setModalDetail(true) }}>Detail</button>
                                             <a onClick={() => { Removefunction(item.id) }} className='btn btn-danger'>Remove</a>
 
                                         </td>
